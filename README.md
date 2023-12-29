@@ -1,1 +1,1 @@
-# GSAP-Parallax-Effect
+# GSAP-ParallaxEffect
