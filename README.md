@@ -18,6 +18,18 @@ npm install gsap
 ```
 ## GSAP Parallax Effect01
 
+<details> 
+
+<summary>설치</summary>
+
+```js
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+
+```
+
+</details>
+
 <details>
 
  <summary>GSAP scrollTrigger - 애니메이션 기본 효과</summary>
@@ -175,6 +187,18 @@ box8 - box8이 화면에 나타날 때, 스크롤 속도에 따라 부드럽게 
 </details>
 
 ## GSAP Parallax Effect02
+
+<details> 
+
+<summary>설치</summary>
+
+```js
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+
+```
+
+</details>
 
 <details>
 
@@ -365,6 +389,18 @@ ani9 - section9 내의 이미지가 2초 동안 60배로 확대되면서 나타�
 
 ## GSAP Parallax Effect03
 
+<details> 
+
+<summary>설치</summary>
+
+```js
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+
+```
+
+</details>
+
 <details>
 
 <summary>GSAP scrollTrigger - 배경 고정시키기 </summary>
@@ -433,12 +469,27 @@ tops 배열은 각 섹션에 대한 ScrollTrigger를 생성하여 시작 위치�
 
 ## GSAP Parallax Effect04
 
+<details> 
+
+<summary>설치</summary>
+
+```js
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+
+```
+
+</details>
+
 <details>
 
 <summary>GSAP scrollTrigger - 이질감 효과</summary>
 
 <br>
-
+1. yPercent: -100: 애니메이션 중에 요소의 수직 방향 이동을 나타내며, 여기서는 위로 100% 이동하도록 설정, ease: "none": 애니메이션의 이질감 효과를 주기 위해 이질적인(ease 없는) 움직임을 설정, 설정된 애니메이션은 스크롤 이벤트에 반응하여 ".parallax__item__desc" 클래스를 가진 요소를 수직으로 이동시키고, 이를 통해 이질감을 표현<br>
+<br>
+2. gsap.utils.toArray(".parallax__item__desc").forEach(item => {...}): ".parallax__item__desc" 클래스를 가진 모든 요소를 배열로 가져와서 각 요소에 대해 반복 작업을 수행, yPercent: -200: 각 요소에 대한 애니메이션 중에 요소의 수직 방향 이동을 나타내며, 여기서는 위로 200% 이동하도록 설정 , ease: "none": 애니메이션의 이질감 효과를 주기 위해 이질적인(ease 없는) 움직임을 설정, .parallax__item__desc" 클래스를 가진 여러 개의 요소에 대해 각각 이질감을 표현하는 애니메이션을 설정하고, 스크롤 이벤트에 반응하여 이질감을 나타냅니다.<br>
+<br>
 
 ```js
   <script>
@@ -476,4 +527,620 @@ tops 배열은 각 섹션에 대한 ScrollTrigger를 생성하여 시작 위치�
 ```
 </details>
 
-    
+
+## GSAP Parallax Effect05
+
+<details> 
+
+<summary>설치</summary>
+
+```js
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+
+```
+
+</details>
+
+<details>
+
+<summary>GSAP scrollTrigger - 나타나기 효과</summary>
+
+<br>
+1. const animate = (item) => {...}: animate 함수는 요소의 등장 애니메이션을 처리합니다. 요소에 설정된 클래스에 따라 등장 방향과 관련된 변수들(x, y)을 설정하고, gsap.fromTo 메서드를 사용하여 애니메이션을 적용, gsap.utils.toArray(".reveal").forEach(item => {...}): ".reveal" 클래스를 가진 모든 요소에 대해 반복 작업을 수행하고,설정된 코드는 스크롤되면서 ".reveal" 클래스를 가진 요소들이 화면에 나타날 때 등장 애니메이션을 수행하며, 각 요소에 설정된 클래스에 따라 다양한 등장 방향과 효과를 부여합니다. <br>
+<br>
+
+```js
+   <script>
+        const hide = (item) => {
+            gsap.set(item, {autoAlpha: 0});
+        }
+        const animate = (item) => {
+            let x = 0;
+            let y = 0;
+            let delay = item.dataset.delay;
+
+            if(item.classList.contains("reveal_LTR")){
+                x = -100;
+                y = 0;
+            }else if(item.classList.contains("reveal_BTT")){
+                x = 0,
+                y = 100
+            }else if(item.classList.contains("reveal_TTB")){
+                X = 0,
+                Y = -100
+            }else {
+                x = 100,
+                y = 0
+            }
+
+            gsap.fromTo(item,
+                {autoAlpha:0, x: x, y: y}, 
+                {autoAlpha:1, x: 0, y: 0, delay, duration: 1.25, overwrite: "auto", ease:"expo"})
+        }
+
+        gsap.utils.toArray(".reveal").forEach(item => {
+            hide(item);
+
+            ScrollTrigger.create ({
+                trigger: item,
+                start:"top bottom",
+                end : "bottom top",
+                markers: true,
+                onEnter: () => {animate(item)}
+            })
+        });
+    </script>
+
+```
+</details>
+
+## GSAP Parallax Effect06
+
+<details> 
+
+<summary>설치</summary>
+
+```js
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+
+```
+
+</details>
+
+<details>
+
+<summary>GSAP scrollTrigger - 텍스트 효과</summary>
+
+<br>
+1. let text = document.querySelector(".split"): HTML 문서에서 클래스가 "split"인 요소를 선택하여 text 변수에 할당, let splitText = text.innerText;: 선택된 요소의 텍스트 내용을 가져와서 splitText 변수에 저장,  결과적으로, 각 문자 주위에 span 태그가 추가된 문자열이 splitWrap 변수에 저장, text.innerHTML = splitWrap = "span" + splitWrap + "/span";: 기존의 텍스트를 감싸는 span 태그를 추가하여 다시 text 요소의 내용으로 설정합니다. 이렇게 하면 각 문자가 span으로 감싸진 형태로 텍스트가 변환 , 선택한 요소의 텍스트가 문자 단위로 분리되고, 각 문자가 span 태그로 감싸져 시각적인 효과를 얻을 수 있습니다.<br>
+<br>
+2. 클래스가 "split"인 모든 요소의 텍스트가 문자 단위로 분리되고, 각 문자가 span 태그로 감싸져 시각적인 효과를 얻을 수 있습니다. 또한, 보조 기술 사용자를 위해 각 문자는 숨겨진 상태로 제공되지만 aria-label 속성을 통해 의미있는 텍스트가 제공됩니다.<br>
+<br>
+3. 먼저, 각 요소의 텍스트를 문자 단위로 분리하고, 공백 문자는 &nbsp 로 대체하여 각 문자를 span 태그로 감싸는 작업을 하고, 다음으로 GSAP 라이브러리와 ScrollTrigger 플러그인을 사용하여 애니메이션을 적용, 각 문자를 분리하여 span 태그로 감싸고, GSAP를 이용하여 스크롤 시에 등장하는 애니메이션을 적용하여 동적이고 효과적인 텍스트 효과를 구현합니다.<br>
+<br>
+4. let splitClient = new SplitType(target, {type: "line, word, char"});: SplitType을 사용하여 각 요소의 텍스트를 분리합니다. type 옵션을 통해 분리할 단위를 지정하고, "line, word, char" 옵션은 줄, 단어, 문자 단위로 텍스트를 분리하라는 의미, SplitType을 사용하여 텍스트를 분리하고, GSAP를 이용하여 단어 단위로 등장하는 애니메이션을 적용하여 동적이고 효과적인 텍스트 효과를 구현합니다.<br>
+<br>
+
+```js 
+    <script>
+        // 01. 텍스트 분리하기
+        let text = document.querySelector(".split")
+        let splitText = text.innerText;
+        let splitWrap = splitText.split("").join("</span><span>");
+        text.innerHTML = splitWrap = "<span>" + splitWrap + "</span>";
+
+        // 02. 모든 텍스트 분리하기
+        document.querySelectorAll(".split").forEach(text => {
+            let splitWrap = text.innerText.split("").join("</span><span aria-hidden='true'>");
+            text.innerHTML = "<span aria-hidden=true>" + splitWrap + "</span>";
+            text.setAttribute("aria-label",text.innerText)
+        })
+
+        // 03. 모든 텍스트 분리하기 : 여백 표현하기
+        document.querySelectorAll(".split").forEach(text => {
+            let theText = text.innerText;
+            let newText = "";
+
+            for(let i=0; i<text.innerText.length; i++){
+                newText += "<span aria-hidden=true>";
+                
+                if(text.innerText[i] == " "){
+                    newText += "&nbsp";
+                }else {
+                    newText += text.innerText[i];
+                }    
+                newText += "</span>";    
+            }
+            text.innerHTML = newText;
+            text.setAttribute("aria-label", theText);
+        });
+
+        gsap.utils.toArray(".split").forEach(text => {
+            gsap.from(text.querySelectorAll("span"), {
+                yPercent: 100,
+                autoAlpha:0,
+                duration: 1,
+                ease:"circ.out",
+                stagger: {
+                    amount:1,
+                    from:"random"
+                },
+                scrollTrigger: {
+                    trigger: text,
+                    start: "top bottom",
+                    end: "+400",
+                    markers: true
+                }
+            });
+        });
+
+        // 04 split-type 사용하기
+        const target = gsap.utils.toArray(".split");
+
+        target.forEach(target => {
+            let splitClient = new SplitType(target, {tpye: "line, word, char"});
+            let lines = splitClient.lines;
+            let words = splitClient.words;
+            let chars = splitClient.chars;
+
+            gsap.from(words, {
+                yPercent:100,
+                opacity:0,
+                rotation:30,
+                duration: 0.7,
+                stagger: 0.031,
+                scrollTrigger: {
+                    trigger: target,
+                    start:"top bottom",
+                    end:"+400",
+                    markers: true
+                }
+            })
+        })
+
+    </script>
+```
+</details> 
+
+
+## GSAP Parallax Effect07
+
+<details> 
+
+<summary>설치</summary>
+
+```js
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+
+```
+
+</details>
+
+<details>
+
+<summary>GSAP scrollTrigger - 배경색 효과</summary>
+<br>
+1. onEnter: () => gsap.to("body", {...}): 트리거가 화면에 진입할 때, gsap.to를 사용하여 body 요소의 배경 색상을 color 값으로 변경합니다. duration 옵션은 애니메이션의 지속 시간을 설정합니다.<br>
+2. onEnterBack: () => gsap.to("body", {...}): 트리거가 화면에서 벗어나면서 다시 위로 진입할 때도 마찬가지로 gsap.to를 사용하여 body 요소의 배경 색상을 color 값으로 변경합니다.이 코드를 통해 각 "parallax__item" 요소가 화면에 진입할 때와 화면에서 벗어날 때, 해당 요소의 data-bgcolor 값을 이용하여 body 요소의 배경 색상을 부드럽게 변경합니다. <br>
+
+```js 
+  // data 값으로 배경 변경
+        gsap.utils.toArray(".parallax__item").forEach(item => {
+            let color = item.getAttribute("data-bgcolor");
+            
+            ScrollTrigger.create({
+                trigger: item,
+                start:"top 50%",
+                end: "bottom 5%",
+                markers: true,
+
+                onEnter: () => gsap.to("body", {
+                    backgroundColor: color,
+                    duration: 1.4,
+                }),
+                onEnterBack: () => gsap.to("body", {
+                    backgroundColor: color,
+                    duration:1.4,
+                })
+            });
+        });
+```
+</details> 
+
+## GSAP Parallax Effect08
+
+<details> 
+
+<summary>설치</summary>
+
+```js
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+
+```
+
+</details>
+
+<details>
+
+<summary>GSAP scrollTrigger - 진행바 효과</summary>
+<br>
+1. 스크롤 이벤트에 따라 "progress" 요소의 value 속성이 0에서 100으로 부드럽게 증가하는 애니메이션을 만듭니다. 스크럽 효과는 스크롤 위치에 따라 애니메이션을 부드럽게 조절하여 자연스러운 효과를 제공합니다.<br>
+<br>
+
+```js 
+   <script>
+       gsap.to("progress" , {
+            value: 100,
+            ease:"none",
+            scrollTrigger: {scrub:0.3}
+       });
+    </script>
+```
+</details> 
+
+## GSAP Parallax Effect09
+
+<details> 
+
+<summary>설치</summary>
+
+```js
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.1/ScrollToPlugin.min.js"></script>
+```
+- 웹 페이지 내에서 다른 섹션으로 이동하는 링크를 클릭할 때 부드럽게 스크롤되도록 구현할 수 있습니다.
+</details>
+
+<details>
+
+<summary>GSAP scrollTrigger - 메뉴 이동 효과</summary>
+<br>
+1. linkST = ScrollTrigger.create({...});: 각 섹션의 스크롤 트리거를 생성합니다. 이 트리거는 스크롤 위치에 따라 링크의 활성 상태를 변경하는 데 사용됩니다.
+2. e.preventDefault();: 기본 클릭 동작을 막아 페이지가 즉시 이동하는 것을 방지합니다.<br>
+3. gsap.to(window, { duration: 0.5, scrollTo: linkST.start, overwrite: "auto" });: 클릭 이벤트가 발생하면 gsap.to를 사용하여 윈도우를 특정 스크롤 위치로 애니메이션화하여 이동합니다. 이 때, scrollTo 속성에 linkST.start 값을 사용하여 해당 링크의 시작 지점으로 스크롤합니다.<br> 
+4. function setActive(link) {...}: 활성 링크를 설정하는 함수입니다. 현재 활성 링크 클래스("active")를 모두 제거하고, 전달받은 링크에 "active" 클래스를 추가합니다.<br>
+5. 네비게이션 링크를 클릭하거나 스크롤할 때 해당 섹션으로 부드럽게 이동하면서 활성 링크를 갱신합니다.<br>
+<br>
+
+```js 
+   <script>
+       gsap.to("progress" , {
+            value: 100,
+            ease:"none",
+            scrollTrigger: {scrub:0.3}
+       });
+    </script>
+```
+</details> 
+
+## GSAP Parallax Effect10
+
+<details> 
+
+<summary>설치</summary>
+
+```js
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.1/ScrollToPlugin.min.js"></script>
+```
+
+</details>
+
+<details>
+
+<summary>GSAP scrollTrigger - 메뉴 축소 효과</summary>
+<br>
+1. toggleClass: {...}: 특정 스크롤 범위에 도달하면 클래스를 토글하는 설정을 지정합니다.<br>
+className: "is-active": 토글할 클래스 이름을 지정합니다. 스크롤 범위에 도달하면 이 클래스가 특정 대상에 추가되거나 제거됩니다.<br>
+targets: "#parallax__nav": 클래스를 토글할 대상 요소를 선택합니다. 여기서는 id가 "parallax__nav"인 요소가 대상이 됩니다.<br>
+<br>
+2. 페이지를 스크롤할 때, 페이지 상단에서 80px 위에 도달하면 "is-active" 클래스를 #parallax__nav 요소에 추가하고, 그 이외의 경우에는 해당 클래스를 제거합니다. <br>이러한 효과를 통해 일반적으로 페이지 스크롤에 반응하여 네비게이션 바 등을 동적으로 변경하는 UX 디자인을 구현할 수 있습니다.<br>
+<br>
+
+```js 
+  <script>
+        ScrollTrigger.create({
+            start: "top -80",
+            end: 99999,
+            toggleClass: {
+                className: "is-active",
+                targets: "#parallax__nav"
+            }
+        })
+    </script>
+```
+</details> 
+
+## GSAP Parallax Effect11
+
+<details> 
+
+<summary>설치</summary>
+
+```js
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.1/ScrollToPlugin.min.js"></script>
+```
+
+</details>
+
+<details>
+
+<summary>GSAP scrollTrigger - 메뉴 숨기기 효과</summary>
+<br>
+1. ScrollTrigger.create({...}): ScrollTrigger를 생성하여 스크롤 관련 동작을 설정합니다.<br>
+<br>
+2. onUpdate: (self) => {...}: ScrollTrigger에서 스크롤 업데이트 이벤트가 발생할 때 실행되는 콜백 함수를 정의합니다.<br>
+self.direction === -1 ? showNav.play() : showNav.reverse(): 스크롤 방향이 위쪽인 경우(self.direction === -1), showNav 애니메이션을 재생하고, 아래쪽인 경우에는 애니메이션을 역재생시켜 네비게이션 바를 나타내거나 감춥니다.<br>
+<br>
+3. 페이지를 스크롤할 때, 스크롤 방향에 따라 #parallax__nav 요소가 나타나거나 사라지도록 하는 효과를 가지고 있습니다.<br>
+<br>
+
+```js 
+    <script>
+        const showNav = gsap.from("#parallax__nav", {
+            yPercent: -200,
+            paused: true,
+            duration: 0.2
+        }).progress(1);
+
+        ScrollTrigger.create({
+            start: "top top",
+            end: 99999,
+            onUpdate: (self) => {
+                self.direction === -1 ? showNav.play() : showNav.reverse()
+            }
+        });
+    </script>
+```
+</details> 
+
+## GSAP Parallax Effect12
+
+<details> 
+
+<summary>설치</summary>
+
+```js
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+
+```
+
+</details>
+
+<details>
+
+<summary>GSAP scrollTrigger - 가로 효과</summary>
+<br>
+1. xPercent: -100 * (sections.length - 1): 모든 섹션을 수평으로 왼쪽으로 이동시킵니다. xPercent 속성은 요소를 수평으로 이동시키는데 사용되며, -100 * (sections.length - 1)은 모든 섹션을 왼쪽으로 이동시키는 값입니다.<br>
+<br>
+2. ease: "none": 애니메이션의 이질적인 부드러움을 의미합니다. 여기서는 등속운동을 사용하여 부드러운 스크롤 효과를 만듭니다.<br>
+<br>
+3. 페이지의 수평 스크롤을 통해 여러 섹션을 연속적으로 이동시키면서, ScrollTrigger를 사용하여 각 섹션을 고정하고 스크롤 중에 부드럽게 이동시키는 효과를 제공합니다.<br>
+<br>
+
+```js 
+     <script>
+        let sections = gsap.utils.toArray(".parallax__item");
+
+
+        gsap.to(sections, {
+            xPercent: -100 * (sections.length - 1),
+            ease: "none",
+            scrollTrigger: {
+                trigger: "#parallax__cont",
+                pin: true,
+                scrub: 1,
+                snap: 1 / (sections.length - 1),
+                end: "+=7000"
+            }
+        });
+    </script>
+```
+</details> 
+
+## GSAP Parallax Effect13
+
+<details> 
+
+<summary>설치</summary>
+
+```js
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+
+```
+
+</details>
+
+<details>
+
+<summary>GSAP scrollTrigger - 가로 세로 효과</summary>
+<br>
+1. #horizontal이라는 ID를 가진 요소를 선택하여 horizontal 변수에 할당합니다. 이 요소는 수평으로 스크롤되는 부모 컨테이너입니다.<br>
+<br>
+2. xPercent: -100 * (sections.length - 1): 모든 섹션을 수평으로 왼쪽으로 이동시킵니다. xPercent 속성은 요소를 수평으로 이동시키는데 사용되며, -100 * (sections.length - 1)은 모든 섹션을 왼쪽으로 이동시키는 값입니다.<br>
+<br>
+3. ease: "none": 애니메이션의 이질적인 부드러움을 의미합니다. <br>
+<br>
+4. 페이지의 수평 스크롤을 통해 각 섹션을 고정하고 스크롤 중에 부드럽게 이동시키는 효과를 가지고 있습니다.<br>
+<br>
+
+```js 
+    <script>
+        const horizontal = document.querySelector("#horizontal");
+        const sections = gsap.utils.toArray("#horizontal > section");
+
+        gsap.to(sections, {
+            xPercent: -100 * (sections.length - 1),
+            ease: "none",
+            scrollTrigger: {
+                trigger: horizontal,
+                start: "top top",
+                end: () => "+=" + (horizontal.offsetWidth - innerWidth),
+                pin: true,
+                scrub: 1,
+                invalidateOnRefresh: true,
+                anticipatePin: 1
+            }
+        })
+
+    </script>
+```
+</details> 
+
+## GSAP Parallax Effect14
+
+<details> 
+
+<summary>설치</summary>
+
+```js
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+
+```
+
+</details>
+
+<details>
+
+<summary>GSAP scrollTrigger - 나타나기 효과</summary>
+<br>
+1. let scrollTween = gsap.to(sections, {...}): GSAP의 to 메서드를 사용하여 섹션에 대한 애니메이션을 정의합니다.<br>
+애니메이션은 각 섹션을 수평으로 왼쪽으로 이동시키는 효과를 가지며, ScrollTrigger 플러그인이 적용되어 부드러운 수평 스크롤을 제공합니다.<br>
+<br>
+2. gsap.to(".img4", {...}), gsap.to(".img5", {...}), gsap.to(".img6", {...}):<br>
+각각 ".img4", ".img5", ".img6" 클래스를 가진 요소에 대한 별도의 애니메이션을 정의합니다.<br>
+각각의 gsap.to에서 사용된 옵션은 다음과 같습니다:<br>
+.img4: 세로로 200px 이동하는 y 애니메이션.<br>
+.img5: 720도 회전하는 rotation 애니메이션.<br>
+.img6: 크기를 0.3배로 축소하는 scale 애니메이션.<br>
+<br>
+
+```js 
+    <script>
+        const horizontal = document.querySelector("#horizontal");
+        const sections = gsap.utils.toArray("#horizontal > section");
+
+        let scrollTween = gsap.to(sections, {
+            xPercent: -100 * (sections.length - 1),
+            ease: "none",
+            scrollTrigger: {
+                trigger: horizontal,
+                start: "top top",
+                end: () => "+=" + (horizontal.offsetWidth - innerWidth),
+                pin: true,
+                scrub: 1,
+                invalidateOnRefresh: true,
+                anticipatePin: 1
+            }
+        })
+
+        gsap.to(".img4", {
+            y: 200,
+            duration: 2,
+            ease: "elastic",
+            scrollTrigger: {
+                trigger: ".img4",
+                containerAnimation: scrollTween,
+                start: "left center",
+                toggleActions: "play none reverse none",
+                markers: true,
+                id: "img4"
+            }
+        })
+
+        gsap.to(".img5", {
+            rotation: 720,
+            duration: 2,
+            ease: "elastic",
+            scrollTrigger: {
+                trigger: ".img5",
+                containerAnimation: scrollTween,
+                start: "left center",
+                toggleActions: "play none reverse none",
+                markers: true,
+                id: "img5"
+            }
+        })
+
+        gsap.to(".img6", {
+            scale: 0.3,
+            duration: 2,
+            ease: "elastic",
+            scrollTrigger: {
+                trigger: ".img6",
+                containerAnimation: scrollTween,
+                start: "left center",
+                toggleActions: "play none reverse none",
+                markers: true,
+                id: "img6"
+            }
+        })
+
+    </script>
+```
+</details> 
+
+## GSAP Parallax Effect15
+
+<details> 
+
+<summary>설치</summary>
+
+```js
+ <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.5/ScrollTrigger.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.1/ScrollToPlugin.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/studio-freight/lenis@1/bundled/lenis.min.js"></script>
+
+```
+- Lenis 라이브러리는 페이지 스크롤에 대한 부드러운 애니메이션 효과(스무스 효과)를 적용하기 위한 도구로 사용됩니다. 
+</details>
+
+<details>
+
+<summary>GSAP scrollTrigger - 스무스 효과</summary>
+<br>
+1. Lenis는 페이지 스크롤에 대한 이벤트를 처리하는 라이브러리입니다.<br>
+<br>
+2. function raf(time) { lenis.raf(time); requestAnimationFrame(raf) }: raf 함수를 정의합니다.<br>
+lenis.raf(time)을 호출하여 Lenis 라이브러리가 현재 스크롤 위치에 따라 애니메이션을 처리하도록 합니다.<br>
+requestAnimationFrame(raf)를 사용하여 브라우저가 다음 리페인트 전에 raf 함수를 호출하도록 요청합니다.<br>
+<br>
+3. requestAnimationFrame(raf): 최초에 raf 함수를 호출하여 애니메이션 및 스크롤 이벤트에 대한 루프를 시작합니다.<br>
+raf 함수는 계속해서 다음 프레임을 요청하여 반복 실행됩니다.<br>
+<br>
+4. Lenis 라이브러리를 사용하여 페이지 스크롤에 대한 이벤트를 감지하고, 스크롤에 따른 애니메이션을 처리하는 루프를 구현합니다.<br>
+console.log(e)를 통해 스크롤 이벤트의 정보를 콘솔에 출력하고 있습니다.<br>
+<br>
+
+```js 
+      <script>
+        const lenis = new Lenis({
+            duration: 2,
+            easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t))
+        });
+
+        lenis.on('scroll', (e) => {
+            console.log(e)
+        })
+
+        function raf(time) {
+            lenis.raf(time)
+            requestAnimationFrame(raf)
+        }
+
+        requestAnimationFrame(raf)
+    </script>
+```
+</details> 
