@@ -1097,7 +1097,7 @@ self.direction === -1 ? showNav.play() : showNav.reverse(): 스크롤 방향이 
 
 <summary>설치</summary>
 
-```js
+```html
  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.5/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.5/ScrollTrigger.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.1/ScrollToPlugin.min.js"></script>
